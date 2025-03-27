@@ -19,12 +19,12 @@ def menu() -> None:
     print('Selecione uma opção abaixo: ')
     print('1 - Cadastrar produto')
     print('2 - Listar produto')
-    print('3 - Procurar produto')
+    print('3 - Comprar produto')
     print('4 - Visualizar carrinho')
     print('5 - Fechar pedido')
     print('6 - Sair do sistema')
-
-    opcao: int = int(input())
+    
+    opcao: int = int(input(f'{"\n"}OPÇÃO: '))
     
     if opcao == 1:
         cadastrar_produto()
@@ -49,7 +49,7 @@ def cadastrar_produto() -> None:
     print('###################')
 
     nome: str = input('Informe o nome do produto: ')
-    preco: float = input('Informe o preço do produto: ')
+    preco: float = float(input('Informe o preço do produto: '))
     
     produto: Produto = Produto(nome=nome, preco=preco)
     
@@ -75,14 +75,15 @@ def listar_produto() -> None:
 
 def comprar_produto() -> None:
     if len(produtos) > 0:
-        print('Informe o código do produto que deseja adicionar ao carrinho: ')
+        print('Informe o código do produto que deseja adicionar ao carrinho')
         print('---------------------------------------------------------------------')
         print('======================= Produtos disponíveis ==========================')
         for produto in produtos:
             print(produto)
             print('---------------------------------------------------------------------')
             sleep(1)
-        codigo: int = input(())
+        codigo: int = input(('Codigo: '))
+        codigo = int(codigo)
         produto: Produto = selecionar_produto_por_codigo(codigo=codigo)
         if produto:
             if len(carrinho) > 0:
@@ -122,7 +123,7 @@ def visualizar_carrinho() -> None:
         print('Produtos no carrinho: ')
         
         for item in carrinho:
-            for dados in item.Items():
+            for dados in item.items():
                 print(dados[0])
                 print(f'Quantidade: {dados[1]}')
                 print('-------------------------------')
