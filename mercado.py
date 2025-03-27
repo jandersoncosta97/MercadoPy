@@ -4,8 +4,8 @@ from time import sleep
 from models.produto import Produto
 from utils.helper import formata_float_str_moeda
 
-produtos = list(Produto) = []
-carrinho = list[Dict[Produto, int]] = []
+produtos: list[Produto] = []
+carrinho: list[Dict[Produto, int]] = []
 
 def main() -> None:
     menu()
@@ -58,7 +58,8 @@ def cadastrar_produto() -> None:
     print(f'O produto {produto.nome} foi cadastrado com sucesso!')    
     sleep(2)
 
-
+    menu()
+    
 def listar_produto() -> None:
     if len(produtos) > 0:
         print('Listagem de produtos')
