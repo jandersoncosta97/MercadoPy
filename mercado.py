@@ -7,15 +7,17 @@ from utils.helper import formata_float_str_moeda
 produtos: list[Produto] = []
 carrinho: list[Dict[Produto, int]] = []
 
+
 def main() -> None:
     menu()
-    
+
+
 def menu() -> None:
     print('#####################################################')
     print('#####################  BEM-VINDO (A)   ##################')
     print('#####################  GEEK SHOP   ##################')
     print('#####################################################')
-    
+
     print('Selecione uma opção abaixo: ')
     print('1 - Cadastrar produto')
     print('2 - Listar produto')
@@ -23,9 +25,9 @@ def menu() -> None:
     print('4 - Visualizar carrinho')
     print('5 - Fechar pedido')
     print('6 - Sair do sistema')
-    
+
     opcao: int = int(input(f'{"\n"}OPÇÃO: '))
-    
+
     if opcao == 1:
         cadastrar_produto()
     elif opcao == 2:
@@ -44,22 +46,23 @@ def menu() -> None:
         print('Opção inválida! ')
         menu()
 
+
 def cadastrar_produto() -> None:
     print('Cadastro de Produto')
     print('###################')
 
     nome: str = input('Informe o nome do produto: ')
     preco: float = float(input('Informe o preço do produto: '))
-    
+
     produto: Produto = Produto(nome=nome, preco=preco)
-    
+
     produtos.append(produto)
-    
+
     print(f'O produto {produto.nome} foi cadastrado com sucesso!')    
     sleep(2)
 
     menu()
-    
+
 def listar_produto() -> None:
     if len(produtos) > 0:
         print('Listagem de produtos')
@@ -72,6 +75,7 @@ def listar_produto() -> None:
         print('Ainda não existem produtos cadastrados!')
     sleep(2)
     menu()
+
 
 def comprar_produto() -> None:
     if len(produtos) > 0:
@@ -118,10 +122,11 @@ def comprar_produto() -> None:
     sleep(2)
     menu()
 
+
 def visualizar_carrinho() -> None:
     if len(carrinho) > 0:
         print('Produtos no carrinho: ')
-        
+
         for item in carrinho:
             for dados in item.items():
                 print(dados[0])
@@ -133,12 +138,13 @@ def visualizar_carrinho() -> None:
     sleep(2)
     menu()
 
+
 def fechar_pedido() -> None:
     if len(carrinho) > 0:
         valor_total: float = 0
-        
+
         print('Produtos do carrinho')
-        
+
         for item in carrinho:
             for dados in item.items():
                 print(dados[0])
@@ -154,7 +160,7 @@ def fechar_pedido() -> None:
         print('Ainda não existem produtos no carrinho. ')
     sleep(2)
     menu()
-        
+
 
 def selecionar_produto_por_codigo(codigo: int) -> None:
     p: Produto = None
@@ -166,4 +172,3 @@ def selecionar_produto_por_codigo(codigo: int) -> None:
 
 if __name__ == '__main__':
     main()
-
