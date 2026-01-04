@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict
 from time import sleep
 
 from models.produto import Produto
@@ -58,10 +58,11 @@ def cadastrar_produto() -> None:
 
     produtos.append(produto)
 
-    print(f'O produto {produto.nome} foi cadastrado com sucesso!')    
+    print(f'O produto {produto.nome} foi cadastrado com sucesso!')
     sleep(2)
 
     menu()
+
 
 def listar_produto() -> None:
     if len(produtos) > 0:
@@ -70,7 +71,7 @@ def listar_produto() -> None:
         for produto in produtos:
             print(produto)
             print('====================')
-            sleep(1)  
+            sleep(1)
     else:
         print('Ainda não existem produtos cadastrados!')
     sleep(2)
@@ -80,11 +81,14 @@ def listar_produto() -> None:
 def comprar_produto() -> None:
     if len(produtos) > 0:
         print('Informe o código do produto que deseja adicionar ao carrinho')
-        print('---------------------------------------------------------------------')
-        print('======================= Produtos disponíveis ==========================')
+        print('------------------------------------------------------------- \
+              --------')
+        print('======================= Produtos disponíveis ==============\
+              ============')
         for produto in produtos:
             print(produto)
-            print('---------------------------------------------------------------------')
+            print('---------------------------------------------------------\
+                  ------------')
             sleep(1)
         codigo: int = input(('Codigo: '))
         codigo = int(codigo)
@@ -102,7 +106,8 @@ def comprar_produto() -> None:
                 if not tem_no_carrinho:
                     prod = {produto: 1}
                     carrinho.append(prod)
-                    print(f'O produto {produto.nome} foi adicionado ao carrinho. ')
+                    print(f'O produto {produto.nome} foi adicionado ao \
+                        carrinho. ')
                     sleep(2)
                     menu()
             else:
@@ -115,7 +120,8 @@ def comprar_produto() -> None:
             print(f'O produto com código {codigo} não foi encontrado.')
             sleep(2)
             menu()
-        print('=====================================================================')
+        print('===============================================================\
+            ======')
 
     else:
         print('Ainda não existem produtos para vender. ')
@@ -152,7 +158,7 @@ def fechar_pedido() -> None:
                 valor_total += dados[0].preco*dados[1]
                 print('==============================')
                 sleep(1)
-        print(f'Sua fatura é {formata_float_str_moeda(valor_total)}')        
+        print(f'Sua fatura é {formata_float_str_moeda(valor_total)}')
         print('Volte sempre!')
         carrinho.clear()
         sleep(5)
